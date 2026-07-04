@@ -73,7 +73,7 @@ export default function FooterSection() {
     >
       <div className="mx-auto max-w-7xl">
         {/* Team */}
-        <div className="mb-16">
+        <div id="team" className="mb-16">
           <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-500">Team</p>
           <p className="mb-6 text-sm font-bold text-white">
             바쁜벌꿀 — 인하대학교 종합설계 2026

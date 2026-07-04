@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { label: '작동 방식', id: 'section-how'      },
   { label: '스펙',     id: 'section-specs'    },
   { label: '기대 효과', id: 'section-benefits' },
+  { label: '팀 소개',  id: 'team'             },
 ] as const;
 
 export default function NavBar() {
