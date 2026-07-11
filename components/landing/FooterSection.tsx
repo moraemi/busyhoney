@@ -20,7 +20,7 @@ const TeamCard = memo(function TeamCard({ name, role, initials, color }: typeof 
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl border p-4 text-center transition-all duration-300"
+      className="relative overflow-hidden rounded-2xl border p-3 text-center transition-all duration-300"
       style={{
         borderColor: hov ? `${color}30` : 'rgba(255,255,255,0.06)',
         background:  hov ? `${color}08` : 'rgba(255,255,255,0.02)',
@@ -42,7 +42,7 @@ const TeamCard = memo(function TeamCard({ name, role, initials, color }: typeof 
 
       <p className="mt-2.5 text-xs font-semibold text-white">{name}</p>
 
-      {/* Role — hidden by default, slides in on hover */}
+      {/* Role — 호버 시 슬라이드 인, break-keep으로 한글 단어 중간 잘림 방지 */}
       <AnimatePresence>
         {hov && (
           <motion.p
@@ -50,7 +50,7 @@ const TeamCard = memo(function TeamCard({ name, role, initials, color }: typeof 
             animate={{ opacity: 1, y: 0, height: 'auto' }}
             exit={{ opacity: 0, y: 4, height: 0 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="overflow-hidden text-[10px] leading-relaxed text-slate-400"
+            className="overflow-hidden text-[9px] leading-snug text-slate-400 break-keep"
           >
             <span className="mt-1.5 block">{role}</span>
           </motion.p>
@@ -59,11 +59,6 @@ const TeamCard = memo(function TeamCard({ name, role, initials, color }: typeof 
     </div>
   );
 });
-
-const NAV_COLS = [
-  { head: '제품',     items: ['기능', '작동 방식', '기대 효과', '스펙'] },
-  { head: '프로젝트', items: ['팀 소개', '종합설계', '발표 자료', '깃허브'] },
-] as const;
 
 export default function FooterSection() {
   return (
@@ -90,7 +85,6 @@ export default function FooterSection() {
           className="flex flex-col items-center justify-between gap-6 border-t pt-8 md:flex-row"
           style={{ borderColor: 'rgba(255,255,255,0.05)' }}
         >
-          {/* Logo */}
           <Link href="/">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/logo.png" alt="바쁜벌꿀 팀 로고" className="h-7 w-auto" />
@@ -101,9 +95,7 @@ export default function FooterSection() {
           </p>
 
           <div className="flex items-center gap-5">
-            {[
-              { label: 'GitHub', href: 'https://github.com' },
-            ].map(({ label, href }) => (
+            {[{ label: 'GitHub', href: 'https://github.com' }].map(({ label, href }) => (
               <a
                 key={label}
                 href={href}
